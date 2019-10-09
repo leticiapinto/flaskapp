@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+   <body>
+      <table border = 1>
+         {% for key, value in result.items() %}
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+         {% endfor %}
+      </table>
+	<div>
+	<th> {{ text_to_send }}</th>
+	</div>
+	<!--<img src="{{url_for('static', filename='000000000.png')}}" width="500" height="333" />-->
+	{% for hist in hists %}
+    	<img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" width="650" height="400">
+	{% endfor %}
+	
+   </body>
+</html>

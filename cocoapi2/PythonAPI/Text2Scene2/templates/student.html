@@ -1,10 +1,67 @@
 <html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
    <body>
-      <form action = "result" method = "POST">
-         <p>Sentence 1 <input type = "text" name = "sentence1" /></p>
-         <p>Sentence 2 <input type = "text" name = "sentence2" /></p>
-         <p>Sentence 3 <input type = "text" name = "sentence3" /></p>
-         <p><input type = "submit" value = "submit" /></p>
-      </form>
+     
+      <div id="form-wrapper" style="width:450px;height:500px;argin:auto;boder-width:1px;border-style:solid;border-color:#4CAF50">
+      	<form action = "result" method = "POST" width="350px" height="500px" style="position:fixed;left:3%;">
+		<p>Choose the type of sample:</p>
+		<input type="radio" name="sample" value="1" checked> Abstract
+		<input type="radio" name="sample" value="2"> Layout
+		<input type="radio" name="sample" value="3">Composite
+		<p id="typeid">This is Abstract type </p>	
+		
+		<div id="s1"><p>Sentence 1: <input type = "text" name = "sentence1" /></p></div>
+        	<div id="s2"><p>Sentence 2: <input type = "text" name = "sentence2" /></p></div>
+	        <div id="s3"><p>Sentence 3: <input type = "text" name = "sentence3" /></p></div>
+        	<p><input type = "submit" value = "submit" /></p>
+         </form>
+       </div>
    </body>
+
+   <script>
+	
+	
+	$(":radio").change(function() {
+
+		option = $("input[name='sample']:checked").val();
+		i1 ="";
+		i2 ="";
+		i3 ="";
+		$("input[name='sentence1']").val('');
+		$("input[name='sentence2']").val('');
+		$("input[name='sentence3']").val('');
+		if(option==1){
+			type_m = "Clip-art Generation on Abstract Scenes"; 
+			i1 = "Sentence 1: Mike talks to the dog.<br>";
+			i2 = "Sentence 2: Jenny kicks the soccer ball.<br>";
+			i3 = "Sentence 3: The duck wants to play.<br>";
+			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000073.jpg' alt='Abstract' width='20%'>"
+			$("#s2").fadeIn();
+			$("#s3").fadeIn();
+		}
+		if(option==2){
+			type_m = "Semantic Layout Generation"
+			i1 = "an attractive young woman leads a grey horse through a paddock.<br>";
+			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000042.jpg' alt='Layout' width='20%'>"
+			$("#s2").fadeOut();
+			$("#s3").fadeOut();
+		}
+		if(option==3){
+			type_m = "Synthetic image composites Generation"
+			i1 = "A person that is eating some food on a table.<br>";
+			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000074.jpg' alt='Composites' width='20%'>"
+			$("#s2").fadeOut();
+			$("#s3").fadeOut();
+		}
+
+		console.log(option);
+		total_message = "This is " +  type_m +"<br><br>"+ img +"<br><br>Example of Input:<br><br>"+i1+i2+i3;
+		
+		document.getElementById('typeid').innerHTML = total_message;
+
+    		
+	}).change();
+   </script>
 </html>

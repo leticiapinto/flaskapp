@@ -31,8 +31,8 @@ def maybe_create(dir_path):
         os.makedirs(dir_path)
 
 
-def prepare_directories(config):
-    postfix = datetime.now().strftime("%m%d_%H%M%S")
+def prepare_directories(config, postfix):
+    #postfix = datetime.now().strftime("%m%d_%H%M%S")
     model_name = '{}_{}'.format(config.exp_name, postfix)
     config.model_name = model_name
     config.model_dir = osp.join(config.log_dir, model_name)

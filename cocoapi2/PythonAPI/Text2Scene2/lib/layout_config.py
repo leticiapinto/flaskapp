@@ -120,7 +120,7 @@ parser.add_argument('--sample_mode', type=int, default=0, help="0: top 1, 1: mul
 parser.add_argument('--exp_name', type=str, default='layout', help='experiment name for logging')
 parser.add_argument('--seed', type=int, default=0, help='random seed')
 parser.add_argument('--eps',  type=float, default=1e-10, help='epsilon')
-parser.add_argument('--log_dir',  type=str, default=osp.join(this_dir, '..', 'logs'))
+parser.add_argument('--log_dir',  type=str, default=osp.join(this_dir, '..', 'static'))
 parser.add_argument('--data_dir', type=str, default=osp.join(this_dir, '..', 'data'))
 parser.add_argument('--root_dir', type=str, default=osp.join(this_dir, '..'))
 ##################################################################

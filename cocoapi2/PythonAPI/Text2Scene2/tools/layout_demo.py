@@ -16,16 +16,21 @@ from layout_utils import *
 from layout_config import get_config
 
 
-def layout_demo(config):    
+def layout_demo(config, input_app):    
     transformer = volume_normalize('background')
     train_db = layout_coco(config, split='train', transform=transformer)
     trainer = SupervisedTrainer(train_db)
-    input_sentences = json_load('examples/layout_samples.json')
-    trainer.sample_demo(input_sentences)   
+    #input_sentences = json_load('examples/layout_samples.json')
+    #print(type(input_sentences))
+    #print(type(input_sentences[0]))
+    #print(type(input_app))
+    trainer.sample_demo(list(input_app))   
 
 
 if __name__ == '__main__':
     cv2.setNumThreads(0)
+    input_app = sys.argv[2]
+    postfix = sys.argv[3]
     config, unparsed = get_config()
     config = layout_arguments(config)
     np.random.seed(config.seed)
@@ -33,6 +38,6 @@ if __name__ == '__main__':
     torch.manual_seed(config.seed)
     if(config.cuda):
         torch.cuda.manual_seed_all(config.seed)
-    prepare_directories(config)
+    prepare_directories(config, postfix)
 
-    layout_demo(config)
+    layout_demo(config, input_app)

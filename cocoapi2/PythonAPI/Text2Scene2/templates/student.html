@@ -12,9 +12,9 @@
 		<input type="radio" name="sample" value="3">Composite
 		<p id="typeid">This is Abstract type </p>	
 		
-		<div id="s1"><p>Sentence 1: <input type = "text" name = "sentence1" /></p></div>
-        	<div id="s2"><p>Sentence 2: <input type = "text" name = "sentence2" /></p></div>
-	        <div id="s3"><p>Sentence 3: <input type = "text" name = "sentence3" /></p></div>
+		<div id="s1"><p>Sentence 1: <input type = "text" id = "sentence1" name = "sentence1" required/></p></div>
+        	<div id="s2"><p>Sentence 2: <input type = "text" id = "sentemce2" name = "sentence2" /></p></div>
+	        <div id="s3"><p>Sentence 3: <input type = "text" id = "sentence3" name = "sentence3" /></p></div>
         	<p><input type = "submit" value = "submit" /></p>
          </form>
        </div>
@@ -37,21 +37,27 @@
 			i1 = "Sentence 1: Mike talks to the dog.<br>";
 			i2 = "Sentence 2: Jenny kicks the soccer ball.<br>";
 			i3 = "Sentence 3: The duck wants to play.<br>";
-			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000073.jpg' alt='Abstract' width='20%'>"
+			img = "<img src='static/img1.png' alt='Abstract' width='20%'>"
+			$("[name='sentence2']").attr("required", true);
+			$("[name='sentence3']").attr("required", true);
 			$("#s2").fadeIn();
 			$("#s3").fadeIn();
 		}
 		if(option==2){
 			type_m = "Semantic Layout Generation"
 			i1 = "an attractive young woman leads a grey horse through a paddock.<br>";
-			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000042.jpg' alt='Layout' width='20%'>"
+			img = "<img src='static/img2.png' alt='Layout' width='20%'>"
+			$("[name='sentence2']").attr("required", false);
+			$("[name='sentence3']").attr("required", false);
 			$("#s2").fadeOut();
 			$("#s3").fadeOut();
 		}
 		if(option==3){
 			type_m = "Synthetic image composites Generation"
 			i1 = "A person that is eating some food on a table.<br>";
-			img = "<img src='http://vision.cs.virginia.edu/sdata/coco/val2014/COCO_val2014_000000000074.jpg' alt='Composites' width='20%'>"
+			img = "<img src='static/img3.png' alt='Composites' width='20%'>"
+			$("[name='sentence2']").attr("required", false);
+			$("[name='sentence3']").attr("required", false);
 			$("#s2").fadeOut();
 			$("#s3").fadeOut();
 		}

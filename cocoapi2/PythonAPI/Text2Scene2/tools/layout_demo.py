@@ -21,10 +21,8 @@ def layout_demo(config, input_app):
     train_db = layout_coco(config, split='train', transform=transformer)
     trainer = SupervisedTrainer(train_db)
     #input_sentences = json_load('examples/layout_samples.json')
-    #print(type(input_sentences))
-    #print(type(input_sentences[0]))
     #print(type(input_app))
-    trainer.sample_demo(list(input_app))   
+    trainer.sample_demo([input_app])   
 
 
 if __name__ == '__main__':
